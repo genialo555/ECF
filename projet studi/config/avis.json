@@ -1,0 +1,6 @@
+{
+    "pseudo": "Visiteur123",
+    "commentaire": "Superbe zoo !",
+    "dateCreation": { "$date": "2024-07-22T00:00:00Z" },
+    "estValide": false
+  }

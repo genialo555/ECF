@@ -1,0 +1,9 @@
+<h1><?= $habitat->getNom() ?></h1>
+<p><?= $habitat->getDescription() ?></p>
+
+<h2>Animaux de cet habitat :</h2>
+<ul>
+    <?php foreach ($habitat->getAnimaux() as $animal): ?>
+        <li><?= $animal->getNom() ?></li>
+    <?php endforeach; ?>
+</ul>

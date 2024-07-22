@@ -1,0 +1,224 @@
+# Manuel d'utilisation - Application de gestion du Zoo Arcadia
+
+Version 1.0
+Date : 22 juillet 2024
+
+## Table des matières
+
+1. Introduction
+2. Guide de démarrage rapide
+3. Fonctionnalités pour les visiteurs
+4. Fonctionnalités pour les employés
+5. Fonctionnalités pour les vétérinaires
+6. Fonctionnalités pour l'administrateur
+7. Foire aux questions (FAQ)
+8. Contact et support
+
+## 1. Introduction
+
+Bienvenue dans l'application de gestion du Zoo Arcadia. Cette application a été conçue pour améliorer l'expérience des visiteurs et faciliter la gestion quotidienne du zoo. Situé près de la forêt de Brocéliande en Bretagne depuis 1960, le Zoo Arcadia est fier de sa diversité animale et de son engagement envers l'écologie.
+
+Cette application permet aux visiteurs de découvrir les animaux et les services du zoo, aux employés de gérer les opérations quotidiennes, aux vétérinaires de suivre la santé des animaux, et à l'administration de superviser l'ensemble des activités.
+
+## 2. Guide de démarrage rapide
+
+Pour accéder à l'application, rendez-vous sur [URL de l'application].
+
+L'interface principale se compose de :
+- Un menu de navigation en haut de la page
+- Une zone de contenu principal
+- Un pied de page avec des informations complémentaires
+
+Le menu de navigation contient les liens suivants :
+- Accueil
+- Services
+- Habitats
+- Contact
+- Connexion (pour les employés, vétérinaires et administrateurs)
+
+## 3. Fonctionnalités pour les visiteurs
+
+### 3.1 Page d'accueil
+La page d'accueil présente :
+- Une brève présentation du Zoo Arcadia
+- Des images des principaux habitats
+- Les derniers avis validés des visiteurs
+- Un aperçu des services proposés
+
+### 3.2 Consultation des services
+1. Cliquez sur "Services" dans le menu principal
+2. Vous verrez une liste de tous les services offerts par le zoo
+3. Chaque service affiche :
+   - Son nom
+   - Une brève description
+   - Les horaires (si applicable)
+   - Le tarif (si applicable)
+
+### 3.3 Consultation des habitats et des animaux
+1. Cliquez sur "Habitats" dans le menu principal
+2. Vous verrez une liste de tous les habitats du zoo
+3. Cliquez sur un habitat spécifique pour voir :
+   - Une description de l'habitat
+   - La liste des animaux qui y vivent
+4. Cliquez sur un animal pour voir :
+   - Son nom
+   - Sa race
+   - Des photos
+   - Son état de santé actuel (mis à jour par les vétérinaires)
+
+### 3.4 Soumission d'avis
+1. Sur la page d'accueil, trouvez la section "Laissez votre avis"
+2. Remplissez les champs suivants :
+   - Votre pseudo
+   - Votre avis (texte)
+3. Cliquez sur "Soumettre"
+4. Un message confirmera que votre avis a été reçu et sera examiné
+
+### 3.5 Formulaire de contact
+1. Cliquez sur "Contact" dans le menu principal
+2. Remplissez le formulaire avec :
+   - Votre nom
+   - Votre adresse e-mail
+   - L'objet de votre message
+   - Votre message
+3. Cliquez sur "Envoyer"
+4. Un message confirmera l'envoi de votre message
+
+## 4. Fonctionnalités pour les employés
+
+### 4.1 Connexion
+1. Cliquez sur "Connexion" dans le menu principal
+2. Entrez votre adresse e-mail (username) et votre mot de passe
+3. Cliquez sur "Se connecter"
+
+### 4.2 Validation des avis
+1. Dans votre espace employé, cliquez sur "Avis à valider"
+2. Pour chaque avis :
+   - Lisez le contenu
+   - Cliquez sur "Valider" pour l'approuver ou "Refuser" pour le rejeter
+3. Les avis validés apparaîtront sur la page d'accueil
+
+### 4.3 Modification des services
+1. Dans votre espace employé, cliquez sur "Gestion des services"
+2. Pour modifier un service existant :
+   - Cliquez sur le service
+   - Modifiez les champs nécessaires
+   - Cliquez sur "Enregistrer"
+3. Pour ajouter un nouveau service :
+   - Cliquez sur "Ajouter un service"
+   - Remplissez tous les champs
+   - Cliquez sur "Créer"
+
+### 4.4 Enregistrement de l'alimentation des animaux
+1. Dans votre espace employé, cliquez sur "Gestion des animaux"
+2. Sélectionnez l'animal concerné
+3. Cliquez sur "Ajouter une alimentation"
+4. Remplissez le formulaire avec :
+   - La date et l'heure
+   - Le type de nourriture
+   - La quantité
+5. Cliquez sur "Enregistrer"
+
+## 5. Fonctionnalités pour les vétérinaires
+
+### 5.1 Connexion
+Identique à la connexion des employés.
+
+### 5.2 Saisie des comptes-rendus
+1. Dans votre espace vétérinaire, cliquez sur "Nouveau compte-rendu"
+2. Sélectionnez l'animal concerné
+3. Remplissez le formulaire avec :
+   - L'état de l'animal
+   - La nourriture recommandée
+   - Le grammage recommandé
+   - La date de passage
+   - Des détails supplémentaires (facultatif)
+4. Cliquez sur "Enregistrer le compte-rendu"
+
+### 5.3 Consultation de l'historique alimentaire
+1. Dans votre espace vétérinaire, cliquez sur "Historique alimentaire"
+2. Sélectionnez l'animal souhaité
+3. Vous verrez un tableau avec toutes les entrées d'alimentation, incluant :
+   - La date et l'heure
+   - Le type de nourriture
+   - La quantité
+   - L'employé ayant effectué l'enregistrement
+
+### 5.4 Commentaires sur les habitats
+1. Dans votre espace vétérinaire, cliquez sur "Habitats"
+2. Sélectionnez l'habitat souhaité
+3. Dans la section "Commentaire vétérinaire", ajoutez votre avis sur l'état de l'habitat
+4. Cliquez sur "Enregistrer le commentaire"
+
+## 6. Fonctionnalités pour l'administrateur
+
+### 6.1 Connexion
+Utilisez vos identifiants administrateur fournis lors de la configuration initiale de l'application.
+
+### 6.2 Gestion des comptes utilisateurs
+1. Dans le menu d'administration, cliquez sur "Gestion des utilisateurs"
+2. Pour créer un nouveau compte :
+   - Cliquez sur "Ajouter un utilisateur"
+   - Remplissez le formulaire (e-mail, rôle, mot de passe temporaire)
+   - Cliquez sur "Créer"
+3. Pour modifier un compte existant :
+   - Cliquez sur l'utilisateur dans la liste
+   - Modifiez les champs nécessaires
+   - Cliquez sur "Enregistrer les modifications"
+4. Pour supprimer un compte :
+   - Cliquez sur l'icône de suppression à côté du compte
+   - Confirmez la suppression
+
+### 6.3 Modification des informations du zoo
+1. Dans le menu d'administration, vous trouverez des sections pour :
+   - Services
+   - Horaires
+   - Habitats
+   - Animaux
+2. Cliquez sur la section que vous souhaitez modifier
+3. Suivez les instructions à l'écran pour ajouter, modifier ou supprimer des éléments
+
+### 6.4 Consultation des rapports vétérinaires
+1. Dans le menu d'administration, cliquez sur "Rapports vétérinaires"
+2. Utilisez les filtres en haut de la page pour :
+   - Sélectionner un animal spécifique
+   - Choisir une plage de dates
+3. Cliquez sur un rapport pour voir tous les détails
+
+### 6.5 Visualisation des statistiques
+1. Sur le dashboard principal, vous verrez un graphique montrant :
+   - Le nombre de consultations pour chaque animal
+   - Les tendances de visite au fil du temps
+2. Utilisez les options de filtre pour affiner les données par période ou par habitat
+
+## 7. Foire aux questions (FAQ)
+
+Q : Comment puis-je réinitialiser mon mot de passe ?
+R : Contactez l'administrateur du zoo pour réinitialiser votre mot de passe. Pour des raisons de sécurité, il n'y a pas de fonction de réinitialisation automatique.
+
+Q : Les avis sont-ils immédiatement visibles sur le site ?
+R : Non, les avis doivent d'abord être validés par un employé avant d'apparaître sur le site. Cela permet de s'assurer que tous les avis affichés sont appropriés.
+
+Q : Comment puis-je modifier les informations d'un animal ?
+R : Seul l'administrateur peut modifier les informations de base d'un animal. Les vétérinaires peuvent ajouter des informations sur l'état de santé via les comptes-rendus.
+
+Q : Est-il possible de voir les statistiques de visite pour une période spécifique ?
+R : Oui, l'administrateur peut ajuster les filtres dans le dashboard pour voir les statistiques sur différentes périodes.
+
+Q : Comment les visiteurs peuvent-ils savoir quand un nouveau service est ajouté ?
+R : Les nouveaux services sont automatiquement affichés dans la section "Services" du site. De plus, les mises à jour importantes sont généralement annoncées sur la page d'accueil.
+
+## 8. Contact et support
+
+Pour toute question technique ou problème d'utilisation de l'application, veuillez contacter notre équipe de support :
+
+Email : support@zooarcadia.com
+Téléphone : +33 1 23 45 67 89
+Horaires de support : Du lundi au vendredi, de 9h à 18h
+
+Pour les questions concernant le zoo lui-même (horaires d'ouverture, tarifs, etc.), veuillez utiliser le formulaire de contact sur le site ou contacter directement le zoo :
+
+Email : info@zooarcadia.com
+Téléphone : +33 9 87 65 43 21
+
+Nous vous remercions d'utiliser notre application et espérons qu'elle améliorera votre expérience avec le Zoo Arcadia !

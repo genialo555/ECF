@@ -1,0 +1,778 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+:root {
+    --primary-color: #4a7c59;
+    --secondary-color: #d41827de;
+    --dark-color: #1d3557;
+    --light-color: #e0b779;
+    --hover-color: #f5d6bc;
+    --card-bg-color: #ecda73;
+    --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: var(--dark-color);
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+}
+
+/* Navigation */
+.navbar {
+    padding: 10px 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1030;
+    background-color: rgba(74, 124, 89, 0.8);
+    transition: background-color 0.3s ease;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--light-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 600;
+    padding: 10px 15px;
+    color: var(--light-color) !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--secondary-color) !important;
+}
+
+.navbar-nav .btn {
+    padding: 10px 20px;
+    margin-left: 15px;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--dark-color) !important;
+}
+
+.btn-primary:hover {
+    background-color: #e89048;
+    border-color: #e89048;
+}
+
+/* Carousel */
+#headerCarousel {
+    margin-top: 0;
+}
+
+.carousel-item {
+    height: 100vh;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.6);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.carousel-caption h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.carousel-caption p {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.carousel-caption .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+}
+
+/* Sections */
+section {
+    padding: 60px 0;
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+/* Cards */
+.card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background-color: var(--card-bg-color);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card i {
+    color: var(--primary-color);
+}
+
+/* Animal Cards */
+#animal-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.animal-card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px;
+    position: relative;
+    max-width: 350px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.animal-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.card-image-wrapper {
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.animal-card .card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.animal-card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+.animal-card .card-body {
+    padding: 1.5rem;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.8), #fff);
+}
+
+.animal-card .card-title {
+    font-family: 'Georgia', serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.animal-card .card-text {
+    font-family: 'Arial', sans-serif;
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 0.5rem;
+}
+
+.animal-card .card-footer {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 0.75rem 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.animal-card .btn-view-more {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.animal-card .btn-view-more:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+.animal-card .habitat-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.col-sm-6.col-md-4:nth-child(even) .animal-card {
+    margin-top: 30px;
+}
+
+/* Habitats Section */
+.section-habitats {
+    background-image: url('chemin/vers/votre/image-de-fond.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.section-habitats::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.section-habitats .container {
+    position: relative;
+    z-index: 2;
+}
+
+.section-habitats h2 {
+    color: white;
+}
+
+.habitat-card {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.habitat-card .card-body {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.habitat-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.habitat-card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px;
+    position: relative;
+    max-width: 350px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.habitat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.habitat-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.habitat-card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+.habitat-card .card-body {
+    padding: 1.5rem;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.8), #fff);
+}
+
+.habitat-card .card-title {
+    font-family: 'Georgia', serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.habitat-card .card-text {
+    font-family: 'Arial', sans-serif;
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 1rem;
+}
+
+.habitat-card .btn-discover {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.habitat-card .btn-discover:hover {
+    background-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.habitat-card .animal-count {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.col-md-4:nth-child(3n-1) .habitat-card {
+    margin-top: 30px;
+}
+
+/* Contact Form */
+#contact {
+    background-color: var(--light-color);
+}
+
+#formulaire-contact .form-control {
+    border: 1px solid var(--primary-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+footer a {
+    color: var(--light-color);
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--secondary-color);
+}
+
+.social-icons a {
+    color: var(--light-color);
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--secondary-color);
+}
+
+/* Side Navigation */
+.side-nav {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: rgba(74, 124, 89, 0.9);
+    border-radius: 0 15px 15px 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1020;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+.side-nav-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    color: var(--light-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.side-nav-item:hover, .side-nav-item.active {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.side-nav-item i {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    width: 30px;
+    text-align: center;
+}
+
+.side-nav-item span {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .habitat-card {
+        flex: 0 0 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-item {
+        height: 50vh;
+    }
+    section {
+        padding: 40px 0;
+    }
+    #habitats .container-fluid {
+        padding-left: 15px;
+    }
+    .habitat-card {
+        flex: 0 0 calc(100% - 20px);
+    }
+}
+#avis-valides .carousel-item {
+    height: auto;
+    padding: 20px;
+}
+
+#avis-valides .carousel-item .avis-content {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+/* Conteneur des avis vérifiés */
+#avis-valides .carousel-item {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#avis-valides .carousel-item:hover {
+    transform: scale(1.05);
+}
+
+/* Texte des avis vérifiés */
+#avis-valides .carousel-item .avis-content {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    color: var(--dark-color);
+    line-height: 1.5;
+}
+
+#avis {
+    background-color: var(--light-color);
+    padding: 4rem 0;
+}
+
+#avis h2 {
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+#formulaire-avis {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#formulaire-avis .form-control {
+    border: 1px solid var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+#formulaire-avis .btn-primary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: white;
+}
+
+#formulaire-avis .btn-primary:hover {
+    background-color: #b81621;
+    border-color: #b81621;
+}
+
+.habitat-tooltip {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+    z-index: 1000;
+}
+
+.habitat-card:hover .habitat-tooltip,
+.habitat-card:focus .habitat-tooltip {
+    display: block;
+}
+
+@media (hover: none) {
+    .habitat-tooltip {
+        display: none !important;
+    }
+    .habitat-card.touch-active .habitat-tooltip {
+        display: block !important;
+    }
+}
+#animalModal .carousel-item img {
+    height: 400px;
+    object-fit: cover;
+}
+
+#animalModal .animal-details {
+    padding: 20px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+
+.btn-filter {
+    background-color: var(--light-color);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 8px 15px;
+    margin: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-family: 'Quicksand', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-filter:hover, .btn-filter.active {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-filter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.5s;
+}
+
+.btn-filter:hover::before {
+    left: 100%;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: rgba(74, 124, 89, 0.1);
+    border-radius: 10px;
+}
+/* Conteneur de la barre de recherche */
+#searchBarContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+/* Barre de recherche */
+#searchBar {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+#searchBar:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+}
+
+/* Placeholder du champ de recherche */
+#searchBar::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+.animal-count {
+    display: none;
+}
+
+.animal-count::after {
+    content: '';
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: inherit; /* Pour masquer le texte */
+}
+.btn-discover,
+.btn-more-info {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-discover,
+.btn[data-bs-toggle="modal"][data-bs-target^="#animalModal-"],
+.btn-primary.btn-lg[href="#animaux"] {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-discover:hover,
+.btn[data-bs-toggle="modal"][data-bs-target^="#animalModal-"]:hover,
+.btn-primary.btn-lg[href="#animaux"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+  
+  .section-animaux {
+    position: cover;
+  }
+  .feuilles-container, .tiges-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100px; /* Ajustez la largeur selon vos besoins */
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+  }
+  
+  .feuille, .tige {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
+  
+  .feuille.visible, .tige.visible {
+    opacity: 1;
+  }
+  
+  .feuille-droite, .tige-droite {
+    right: 20px; /* Ajustez la position horizontale selon vos besoins */
+  }
+  .modal-content {
+    background-color: #f0e8d8; /* Utilisez une couleur de fond rappelant le sable ou le papier naturel */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-header {
+    background-color: #8b5a2b; /* Utilisez une couleur de fond rappelant le bois ou la terre */
+    color: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 2px solid #8b5a2b; /* Ajoutez une bordure inférieure à l'en-tête de la modale */
+}
+.modal-footer {
+    border-top: 2px solid #8b5a2b; /* Ajoutez une bordure supérieure au pied de page de la modale */
+  }
+  
+  .modal-title {
+    font-family: 'Poppins', sans-serif; /* Utilisez une police conviviale et moderne */
+    font-weight: 600;
+  }
+  
+  .modal-body {
+    font-family: 'Quicksand', sans-serif; /* Utilisez une police lisible et amicale */
+  }
+  
+  .btn-primary {
+    background-color: #2e8b57; /* Utilisez une couleur de bouton rappelant la nature, comme le vert forêt */
+    border-color: #2e8b57;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+  }
+  
+  .btn-primary:hover {
+    background-color: #1e6b3f; /* Utilisez une couleur plus foncée au survol du bouton */
+    border-color: #1e6b3f;
+  }
+  #animal-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.animal-item {
+    width: calc(33.333% - 20px);
+    margin-bottom: 20px;
+}
+
+@media (max-width: 991px) {
+    .animal-item {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 767px) {
+    .animal-item {
+        width: 100%;
+    }
+}

@@ -1,0 +1,186 @@
+Charte Graphique
+Polices d'écriture
+
+    Quicksand : utilisée pour les boutons et les textes principaux.
+    Arial : utilisée pour le corps du texte.
+    Georgia : utilisée pour les titres des cartes.
+
+css
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+body {
+    font-family: 'Arial', sans-serif;
+}
+.animal-card .card-title {
+    font-family: 'Georgia', serif;
+}
+.btn-filter, .modal-body {
+    font-family: 'Quicksand', sans-serif;
+}
+
+Couleurs
+Nom	Code Couleur	Exemple
+Couleur principale	#4a7c59	
+Couleur secondaire	#d41827de	
+Couleur sombre	#1d3557	
+Couleur claire	#e0b779	
+Couleur hover	#f5d6bc	
+Couleur de fond des cartes	#ecda73	
+Dégradé de fond	#f5f7fa à #c3cfe2	
+
+css
+
+:root {
+    --primary-color: #4a7c59;
+    --secondary-color: #d41827de;
+    --dark-color: #1d3557;
+    --light-color: #e0b779;
+    --hover-color: #f5d6bc;
+    --card-bg-color: #ecda73;
+    --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+Arrière-plans
+
+    Dégradé de fond principal : linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)
+    Couleur de fond des sections : varie selon la section (voir spécificités des sections ci-dessous).
+
+css
+
+body {
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+}
+
+Navigation
+
+    Fond de la barre de navigation : rgba(74, 124, 89, 0.8)
+    Texte et liens : var(--light-color)
+    Liens au survol : var(--secondary-color)
+
+css
+
+.navbar {
+    background-color: rgba(74, 124, 89, 0.8);
+}
+.navbar-nav .nav-link {
+    color: var(--light-color) !important;
+}
+.navbar-nav .nav-link:hover {
+    color: var(--secondary-color) !important;
+}
+
+Boutons
+
+    Boutons principaux :
+        Fond : var(--secondary-color)
+        Texte : var(--dark-color)
+        Au survol : #e89048
+
+css
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--dark-color) !important;
+}
+.btn-primary:hover {
+    background-color: #e89048;
+    border-color: #e89048;
+}
+
+Cartes
+
+    Fond des cartes : var(--card-bg-color)
+    Ombre et effet au survol :
+
+css
+
+.card {
+    background-color: var(--card-bg-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+
+Sections spécifiques
+Section Animaux
+
+    Fond des cartes animaux : #fff
+    Ombre et effet au survol :
+
+css
+
+.animal-card {
+    background-color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.animal-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+Section Habitats
+
+    Fond des cartes habitats : rgba(255, 255, 255, 0.9)
+
+css
+
+.habitat-card {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.habitat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+Formulaire de contact
+
+    Fond : var(--light-color)
+
+css
+
+#contact {
+    background-color: var(--light-color);
+}
+
+Footer
+
+    Fond : var(--dark-color)
+    Texte et liens : var(--light-color)
+    Liens au survol : var(--secondary-color)
+
+css
+
+footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+footer a:hover {
+    color: var(--secondary-color);
+}
+
+Résumé
+Polices d'écriture :
+
+    Quicksand (boutons, textes principaux)
+    Arial (corps du texte)
+    Georgia (titres des cartes)
+
+Palette de couleurs :
+
+    Primaire : #4a7c59
+    Secondaire : #d41827de
+    Sombre : #1d3557
+    Claire : #e0b779
+    Hover : #f5d6bc
+    Fond des cartes : #ecda73
+    Dégradé de fond : linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)
+
+Utilisation des couleurs :
+
+    Navigation : Fond semi-transparent vert foncé, texte clair, survol rouge.
+    Boutons : Fond rouge, texte sombre, survol orange.
+    Cartes : Fond jaune clair, ombre douce, survol translation légère.
+    Sections spécifiques : Adaptation des couleurs de fond pour chaque section (animaux, habitats, contact, footer).

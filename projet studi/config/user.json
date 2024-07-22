@@ -1,0 +1,7 @@
+{
+    "email": "admin@arcadiazoo.com",
+    "motDePasse": "motDePasseHashé",
+    "type": "administrateur",
+    "nom": "Dupont",
+    "prenom": "José"
+  }

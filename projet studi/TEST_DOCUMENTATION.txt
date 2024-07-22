@@ -1,0 +1,135 @@
+Introduction
+
+Ce document a pour but de décrire les procédures et résultats des tests effectués sur l'application web du zoo d'Arcadia. Il couvre les aspects de configuration des tests, les tests manuels et automatisés, ainsi que les résultats obtenus. La version de l'application testée est la 1.0, et les tests ont été effectués le 20 juillet 2024.
+Configuration des tests
+Environnement de test
+
+    Environnement de développement local
+
+Outils utilisés
+
+    Navigateurs : Google Chrome (v102), Mozilla Firefox (v90)
+    Outils de test manuel : TestRail
+    Outils de test automatisé : Jest, Vue Test Utils, Cypress
+
+Tests manuels
+Visiteur
+Fonctionnalité : Page d'accueil
+
+    Étapes de test :
+        Accéder à l'application via l'URL de développement.
+        Vérifier la présence de la présentation du zoo, des images, et des avis.
+    Résultat attendu :
+        La page d'accueil affiche correctement les informations et images du zoo ainsi que les avis.
+    Résultat obtenu :
+        La page d'accueil s'affiche comme prévu.
+    Bugs observés :
+        Aucun
+
+Fonctionnalité : Menu de l’application
+
+    Étapes de test :
+        Naviguer à travers les différentes sections via le menu.
+        Tester les liens de connexion, contact et retour à la page d'accueil.
+    Résultat attendu :
+        Le menu permet une navigation fluide entre les différentes sections.
+    Résultat obtenu :
+        Le menu fonctionne correctement, navigation fluide.
+    Bugs observés :
+        Aucun
+
+Employé
+Fonctionnalité : Validation des avis
+
+    Étapes de test :
+        Accéder à l'espace employé.
+        Valider ou invalider les avis soumis par les visiteurs.
+    Résultat attendu :
+        Les avis peuvent être validés ou invalidés et apparaissent en conséquence sur la page d'accueil.
+    Résultat obtenu :
+        Fonctionnalité de validation des avis opérationnelle.
+    Bugs observés :
+        Aucun
+
+Vétérinaire
+Fonctionnalité : Saisie des informations sur les animaux
+
+    Étapes de test :
+        Accéder à l'espace vétérinaire.
+        Enregistrer l'état de santé et la nourriture des animaux.
+    Résultat attendu :
+        Les informations saisies sont correctement enregistrées et affichées.
+    Résultat obtenu :
+        Enregistrement et affichage des informations comme prévu.
+    Bugs observés :
+        Aucun
+
+Administrateur
+Fonctionnalité : Gestion des comptes
+
+    Étapes de test :
+        Créer et modifier des comptes d’employés et de vétérinaires.
+        Vérifier la réception des emails de création de compte.
+    Résultat attendu :
+        Les comptes sont créés/modifiés correctement, et les emails sont envoyés.
+    Résultat obtenu :
+        Fonctionnalité de gestion des comptes opérationnelle.
+    Bugs observés :
+        Aucun
+
+Tests automatisés
+Frameworks et outils utilisés
+
+    Jest
+    Vue Test Utils
+    Cypress
+
+Exécution des tests automatisés
+
+Pour exécuter les tests automatisés :
+
+    Installer les dépendances via npm install.
+    Lancer les tests unitaires avec Jest : npm run test:unit.
+    Lancer les tests de bout en bout avec Cypress : npm run test:e2e.
+
+Scénarios de test couverts
+
+    Tests unitaires pour les composants Vue.
+    Tests de bout en bout pour les principales fonctionnalités utilisateur :
+        Navigation à travers le menu.
+        Validation des avis par les employés.
+        Saisie des informations vétérinaires.
+        Gestion des comptes administrateur.
+
+Résultats
+Résultats globaux
+
+    Tous les tests unitaires et de bout en bout ont réussi.
+    Aucun bug critique n’a été détecté.
+
+Liste des bugs trouvés
+
+    Aucun bug majeur n’a été identifié.
+
+Captures d'écran
+
+
+Conclusions
+Évaluation générale
+
+L'application est globalement stable et fonctionnelle. Toutes les fonctionnalités principales répondent aux attentes.
+Recommandations
+
+    Poursuivre les tests de régression avant chaque nouvelle version.
+    Améliorer l’interface utilisateur pour une meilleure expérience.
+    Ajouter des tests automatisés pour couvrir plus de scénarios.
+
+Annexes
+Logs
+
+    Logs de tests unitaires
+    Logs de tests e2e
+
+Données de test
+
+    Données de test JSON

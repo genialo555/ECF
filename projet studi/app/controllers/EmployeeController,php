@@ -1,0 +1,75 @@
+<?php
+require_once '../middleware/auth.php';
+require_once '../models/Animal.php';
+
+class EmployeeController {
+
+    public function dashboard() {
+        requireAuth('employee');
+        $searchTerm = $_GET['search'] ?? '';
+        $page = $_GET['p'] ?? 1;
+        $perPage = 10;
+        $offset = ($page - 1) * $perPage;
+        $sortBy = $_GET['sort'] ?? 'name';
+        $sortOrder = $_GET['order'] ?? 'asc';
+        $animals = Animal::search($searchTerm, $perPage, $offset, $sortBy, $sortOrder);
+        $totalAnimals = Animal::countAnimals($searchTerm);
+        $totalPages = ceil($totalAnimals / $perPage);
+        include '../views/employee/dashboard.php';
+    }
+
+    public function feedAnimal($animalId) {
+        requireAuth('employee');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $animal = Animal::findById($animalId);
+            $food = $_POST['food'];
+            $quantity = $_POST['quantity'];
+            $animal->addFood($food, $quantity);
+            header('Location: index.php?page=employee_dashboard');
+            exit();
+        } else {
+            $animal = Animal::findById($animalId);
+            include '../views/employee/feed_animal.php';
+        }
+    }
+}
+
+class VeterinarianController {
+
+    public function dashboard() {
+        requireAuth('veterinarian');
+        $searchTerm = $_GET['search'] ?? '';
+        $animals = Animal::search($searchTerm);
+        include '../views/veterinarian/dashboard.php';
+    }
+
+    public function examineAnimal($animalId) {
+        requireAuth('veterinarian');
+        $animal = Animal::findById($animalId);
+        include '../views/veterinarian/examine_animal.php';
+    }
+}
+
+// Router logic for page handling
+$page = $_GET['page'] ?? 'home';
+$employeeController = new EmployeeController();
+$veterinarianController = new VeterinarianController();
+
+switch ($page) {
+    case 'employee_dashboard':
+        $employeeController->dashboard();
+        break;
+    case 'employee_feed_animal':
+        $employeeController->feedAnimal($_GET['id']);
+        break;
+    case 'veterinarian_dashboard':
+        $veterinarianController->dashboard();
+        break;
+    case 'veterinarian_examine_animal':
+        $veterinarianController->examineAnimal($_GET['id']);
+        break;
+    default:
+        include '../views/home.php';
+        break;
+}
+?>

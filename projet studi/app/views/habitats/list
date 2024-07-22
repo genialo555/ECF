@@ -1,0 +1,10 @@
+<h1>Liste des habitats</h1>
+<ul>
+    <?php foreach ($habitats as $habitat): ?>
+        <li>
+            <a href="index.php?page=habitat_detail&id=<?= $habitat->getId() ?>">
+                <?= $habitat->getNom() ?>
+            </a>
+        </li>
+    <?php endforeach; ?>
+</ul>

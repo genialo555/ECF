@@ -1,0 +1,649 @@
+document.addEventListener('DOMContentLoaded', function() {
+    initializeCarousel();
+    loadAnimals();
+    loadHabitats(); // Ajoutez cette ligne
+    setupContactForm();
+    setupFilters();
+    chargerAvisValides();
+    setupHabitatTooltips();
+    setupSideNavModals();
+    setupSearchBar();
+    setupDiscoveryModals();
+    hideAllExceptThreeRandom();
+});
+
+
+
+
+
+function setupFilters() {
+    const filterButtons = document.querySelectorAll('.btn-filter');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter').toLowerCase();
+            console.log('Filtre sélectionné:', filter);
+            filterAnimals(filter);
+
+            // Mise à jour de la classe active
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+}
+
+function filterAnimals(filter) {
+    const animalItems = document.querySelectorAll('.animal-item');
+    console.log('Nombre d\'éléments animaux:', animalItems.length);
+    animalItems.forEach(item => {
+        const habitat = item.getAttribute('data-habitat').toLowerCase();
+        const diet = item.getAttribute('data-diet').toLowerCase();
+        console.log('Habitat:', habitat, 'Régime:', diet);
+        if (filter === 'all' || habitat === filter || diet === filter) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+// Données des habitats
+const habitats = [
+    {
+        name: "Savane africaine",
+        description: "Vaste plaine herbeuse avec des arbres épars",
+        image: "images/habitats/savane.jpg",
+        animals: [
+            { name: "Lion d'Afrique", species: "Panthera leo", diet: "Carnivore" },
+            { name: "Éléphant d'Afrique", species: "Loxodonta africana", diet: "Herbivore" },
+            { name: "Girafe", species: "Giraffa camelopardalis", diet: "Herbivore" },
+            { name: "Guépard", species: "Acinonyx jubatus", diet: "Carnivore" },
+            { name: "Rhinocéros blanc", species: "Ceratotherium simum", diet: "Herbivore" },
+            { name: "Zèbre de Grévy", species: "Equus grevyi", diet: "Herbivore" }
+        ]
+    },
+    {
+        name: "Forêt tropicale",
+        description: "Habitat dense et humide avec une grande biodiversité",
+        image: "images/habitats/foret_tropicale.jpg",
+        animals: [
+            { name: "Gorille des plaines", species: "Gorilla gorilla", diet: "Herbivore" },
+            { name: "Toucan toco", species: "Ramphastos toco", diet: "Omnivore" },
+            { name: "Jaguar", species: "Panthera onca", diet: "Carnivore" },
+            { name: "Orang-outan", species: "Pongo abelii", diet: "Omnivore" },
+            { name: "Tigre du Bengale", species: "Panthera tigris tigris", diet: "Carnivore" },
+            { name: "Paon", species: "Pavo cristatus", diet: "Omnivore" },
+            { name: "Paresseux à trois doigts", species: "Bradypus tridactylus", diet: "Herbivore" },
+            { name: "Iguane vert", species: "Iguana iguana", diet: "Herbivore" },
+            { name: "Anaconda vert", species: "Eunectes murinus", diet: "Carnivore" },
+            { name: "Tapir", species: "Tapirus terrestris", diet: "Herbivore" },
+            { name: "Chauve-souris frugivore", species: "Pteropus vampyrus", diet: "Frugivore" }
+        ]
+    },
+    {
+        name: "Banquise arctique",
+        description: "Étendue glacée avec des températures extrêmes",
+        image: "images/habitats/banquise.jpg",
+        animals: [
+            { name: "Ours polaire", species: "Ursus maritimus", diet: "Carnivore" },
+            { name: "Phoque annelé", species: "Pusa hispida", diet: "Carnivore" },
+            { name: "Pingouin empereur", species: "Aptenodytes forsteri", diet: "Carnivore" },
+            { name: "Morse", species: "Odobenus rosmarus", diet: "Carnivore" },
+            { name: "Manchot royal", species: "Aptenodytes patagonicus", diet: "Carnivore" }
+        ]
+    },
+    {
+        name: "Forêt tempérée",
+        description: "Forêt avec des saisons bien définies et une diversité modérée",
+        image: "images/habitats/foret_temperee.jpg",
+        animals: [
+            { name: "Cerf élaphe", species: "Cervus elaphus", diet: "Herbivore" },
+            { name: "Renard roux", species: "Vulpes vulpes", diet: "Omnivore" },
+            { name: "Lynx", species: "Lynx lynx", diet: "Carnivore" },
+            { name: "Panda géant", species: "Ailuropoda melanoleuca", diet: "Herbivore" },
+            { name: "Koala", species: "Phascolarctos cinereus", diet: "Herbivore" },
+            { name: "Loup gris", species: "Canis lupus", diet: "Carnivore" }
+        ]
+    },
+    {
+        name: "Désert",
+        description: "Écosystème aride avec des adaptations uniques de la faune",
+        image: "images/habitats/desert.jpg",
+        animals: [
+            { name: "Dromadaire", species: "Camelus dromedarius", diet: "Herbivore" },
+            { name: "Fennec", species: "Vulpes zerda", diet: "Omnivore" },
+            { name: "Kangourou roux", species: "Macropus rufus", diet: "Herbivore" },
+            { name: "Chameau de Bactriane", species: "Camelus bactrianus", diet: "Herbivore" },
+            { name: "Émeu", species: "Dromaius novaehollandiae", diet: "Omnivore" }
+        ]
+    },
+    {
+        name: "Récif corallien",
+        description: "Écosystème marin riche en biodiversité",
+        image: "images/habitats/recif_corallien.jpg",
+        animals: [
+            { name: "Poisson-clown", species: "Amphiprion ocellaris", diet: "Omnivore" },
+            { name: "Requin à pointes noires", species: "Carcharhinus melanopterus", diet: "Carnivore" },
+            { name: "Flamant rose", species: "Phoenicopterus roseus", diet: "Omnivore" }
+        ]
+    },
+    {
+        name: "Montagne",
+        description: "Environnement d'altitude avec des conditions climatiques variées",
+        image: "images/habitats/montagne.jpg",
+        animals: [
+            { name: "Puma", species: "Puma concolor", diet: "Carnivore" },
+            { name: "Aigle royal", species: "Aquila chrysaetos", diet: "Carnivore" },
+            { name: "Lama", species: "Lama glama", diet: "Herbivore" }
+        ]
+    },
+    {
+        name: "Prairie",
+        description: "Vaste étendue d'herbes avec peu d'arbres",
+        image: "images/habitats/prairie.jpg",
+        animals: [
+            { name: "Bison d'Amérique", species: "Bison bison", diet: "Herbivore" }
+        ]
+    },
+    {
+        name: "Côte pacifique",
+        description: "Zone côtière avec un écosystème marin riche",
+        image: "images/habitats/cote_pacifique.jpg",
+        animals: [
+            { name: "Otarie de Californie", species: "Zalophus californianus", diet: "Carnivore" }
+        ]
+    }
+];
+
+// Fonction pour initialiser le carousel
+function initializeCarousel() {
+    const carousel = new bootstrap.Carousel(document.querySelector('#headerCarousel'), {
+        interval: 5000,
+        wrap: true
+    });
+}
+
+function createCard(item, type) {
+    if (type === 'animal') {
+        const safeId = item.name.replace(/[^a-z0-9]/gi, '');
+        return `
+            <div class="col-sm-6 col-md-4 mb-4 animal-item" data-habitat="${item.habitat.toLowerCase()}" data-diet="${item.diet.toLowerCase()}">
+                <div class="card animal-card">
+                    <div class="card-image-wrapper">
+                        <img src="${item.image}" class="card-img-top" alt="${item.name}">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title animal-name">${item.name}</h5>
+                        <p class="card-text">${item.species}</p>
+                        <p class="card-text"><small class="text-muted">Habitat: ${item.habitat}</small></p>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#animalModal-${safeId}">Plus d'infos</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else if (type === 'habitat') {
+        const safeId = item.name.replace(/[^a-z0-9]/gi, '');
+        return `
+            <div class="col-md-4 mb-4">
+                <div class="card habitat-card h-100">
+                    <img src="${item.image}" class="card-img-top" alt="${item.name}">
+                    <div class="animal-count">${item.animals.length} animaux</div>
+                    <div class="card-body">
+                        <h5 class="card-title">${item.name}</h5>
+                        <p class="card-text">${item.description}</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-discover" data-bs-toggle="modal" data-bs-target="#habitatModal-${safeId}">Découvrir</button>
+                    </div>
+                    <div class="habitat-tooltip">
+                        <h6>Animaux de cet habitat :</h6>
+                        <ul>
+                            ${item.animals.map(animal => `
+                                <li>
+                                    <strong>${animal.name}</strong> (${animal.species})
+                                    <br>Régime : ${animal.diet}
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+}
+
+
+function loadAnimals() {
+    const animalGrid = document.getElementById('animal-grid');
+    if (animalGrid) {
+        animalGrid.innerHTML = animals.map(animal => createCard(animal, 'animal')).join('');
+        setupAnimalModals(); 
+        
+    }
+}
+
+function loadHabitats() {
+    const habitatGrid = document.getElementById('habitat-grid');
+    if (habitatGrid) {
+        habitatGrid.innerHTML = habitats.map(habitat => createCard(habitat, 'habitat')).join('');
+        setupHabitatModals(); // Nouvelle fonction pour gérer les modals d'habitat
+    }
+}
+
+function setupFilters() {
+    console.log("Setting up filters");
+    const filterButtons = document.querySelectorAll('.btn-filter');
+    console.log("Filter buttons found:", filterButtons.length);
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter').toLowerCase();
+            console.log('Filtre cliqué:', filter);
+            filterAnimals(filter);
+        });
+    });
+}
+
+function filterAnimals(filter) {
+    console.log("Filtering animals with:", filter);
+    const animalItems = document.querySelectorAll('.animal-item');
+    console.log('Nombre d\'éléments animaux:', animalItems.length);
+    animalItems.forEach(item => {
+        const habitat = item.getAttribute('data-habitat').toLowerCase();
+        const diet = item.getAttribute('data-diet').toLowerCase();
+        console.log(`Animal: habitat=${habitat}, diet=${diet}`);
+        
+        if (filter === 'all' || 
+            habitat.includes(filter.toLowerCase()) || 
+            diet === filter.toLowerCase()) {
+            item.style.display = 'block';
+            console.log("Showing animal");
+        } else {
+            item.style.display = 'none';
+            console.log("Hiding animal");
+        }
+    });
+}
+
+function filterAnimals(filter) {
+    const animalItems = document.querySelectorAll('.animal-item');
+    console.log('Nombre d\'éléments animaux:', animalItems.length); // Log du nombre d'éléments animaux
+    animalItems.forEach(item => {
+        const habitat = item.getAttribute('data-habitat');
+        const diet = item.getAttribute('data-diet').toLowerCase();
+        console.log('Habitat:', habitat, 'Régime:', diet); // Log des attributs des éléments animaux
+        if (filter === 'all' || habitat === filter || diet === filter) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+function setupContactForm() {
+    const form = document.getElementById('formulaire-contact');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const formProps = Object.fromEntries(formData);
+            
+            console.log('Données du formulaire:', formProps);
+            
+            alert('Merci pour votre message ! Nous vous contacterons bientôt.');
+            form.reset();
+        });
+    }
+}
+
+function chargerAvisValides() {
+    const avisValides = [
+        { pseudo: "Alice", commentaire: "Une expérience incroyable ! Les animaux sont magnifiques." },
+        { pseudo: "Bob", commentaire: "Très instructif et amusant pour toute la famille." },
+        { pseudo: "Charlie", commentaire: "J'ai adoré la visite guidée, le guide était passionnant." }
+    ];
+
+    const carousel = document.querySelector('#avis-carousel .carousel-inner');
+    avisValides.forEach((avis, index) => {
+        const item = document.createElement('div');
+        item.className = `carousel-item ${index === 0 ? 'active' : ''}`;
+        item.innerHTML = `
+            <div class="avis-content">
+                <h5>${avis.pseudo}</h5>
+                <p>${avis.commentaire}</p>
+            </div>
+        `;
+        carousel.appendChild(item);
+    });
+}
+
+function setupHabitatTooltips() {
+    const habitatCards = document.querySelectorAll('.habitat-card');
+    habitatCards.forEach(card => {
+        card.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            habitatCards.forEach(c => c.classList.remove('touch-active'));
+            this.classList.add('touch-active');
+        });
+    });
+
+    document.addEventListener('touchstart', function(e) {
+        if (!e.target.closest('.habitat-card')) {
+            habitatCards.forEach(c => c.classList.remove('touch-active'));
+        }
+    });
+}
+
+function setupAnimalModals() {
+    fetch('get_animals.php')
+        .then(response => response.json())
+        .then(animals => {
+            const modalContainer = document.createElement('div');
+            modalContainer.id = 'animal-modals';
+            
+            animals.forEach(animal => {
+                const safeId = animal.name.replace(/[^a-z0-9]/gi, '');
+                const modalId = `animalModal-${safeId}`;
+                const modal = `
+                    <div class="modal fade" id="${modalId}" tabindex="-1" aria-labelledby="${modalId}Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="${modalId}Label">${animal.name}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="${animal.image_url}" class="img-fluid mb-3" alt="${animal.name}">
+                                    <p><strong>Prénom:</strong> ${animal.firstName}</p>
+                                    <p><strong>Espèce:</strong> ${animal.species}</p>
+                                    <p><strong>Habitat:</strong> ${animal.habitat}</p>
+                                    <p><strong>Régime alimentaire:</strong> ${animal.diet}</p>
+                                    <p><strong>État:</strong> ${animal.etat}</p>
+                                    <p><strong>Nourriture proposée:</strong> ${animal.nourritureProposee}</p>
+                                    <p><strong>Grammage:</strong> ${animal.grammageNourriture} g</p>
+                                    <p><strong>Date de passage:</strong> ${animal.datePassage}</p>
+                                    <p><strong>Détails de l'état:</strong> ${animal.detailEtat}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                modalContainer.innerHTML += modal;
+            });
+
+            document.body.appendChild(modalContainer);
+        })
+        .catch(error => console.error('Erreur lors du chargement des modales des animaux:', error));
+}
+function setupHabitatModals() {
+    const modalContainer = document.createElement('div');
+    modalContainer.id = 'habitat-modals';
+    
+    habitats.forEach(habitat => {
+        const modalId = `habitatModal-${habitat.name.replace(/\s+/g, '')}`;
+        const modal = `
+            <div class="modal fade" id="${modalId}" tabindex="-1" aria-labelledby="${modalId}Label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="${modalId}Label">${habitat.name}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="${habitat.image}" class="img-fluid mb-3" alt="${habitat.name}">
+                            <p>${habitat.description}</p>
+                            <h6>Animaux dans cet habitat :</h6>
+                            <ul>
+                                ${habitat.animals.map(animal => `
+                                    <li>${animal.name} (${animal.species}) - ${animal.diet}</li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        modalContainer.innerHTML += modal;
+    });
+
+    document.body.appendChild(modalContainer);
+
+    document.querySelectorAll('.btn-discover').forEach(button => {
+        button.addEventListener('click', function() {
+            const habitatName = this.closest('.habitat-card').querySelector('.card-title').textContent;
+            const modalId = `habitatModal-${habitatName.replace(/\s+/g, '')}`;
+            const modal = new bootstrap.Modal(document.getElementById(modalId));
+            modal.show();
+        });
+    });
+}
+function setupSideNavModals() {
+    const sideNavItems = document.querySelectorAll('.side-nav-item');
+    sideNavItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const modalId = this.getAttribute('data-modal');
+            if (modalId) {
+                const modal = new bootstrap.Modal(document.getElementById(modalId));
+                modal.show();
+            }
+        });
+    });
+}
+function setupDiscoveryModals() {
+    const discoveryCards = document.querySelectorAll('#points-forts .card');
+    discoveryCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const cardTitle = this.querySelector('.card-title').textContent;
+            let modalId;
+            switch(cardTitle) {
+                case 'Diversité Animale':
+                    modalId = 'diversiteAnimaleModal';
+                    loadAnimalCards();
+                    break;
+                case 'Habitats Naturels':
+                    modalId = 'habitatsNaturelsModal';
+                    loadHabitatCards();
+                    break;
+                case 'Conservation':
+                    modalId = 'conservationModal';
+                    break;
+            }
+            if (modalId) {
+                const modal = new bootstrap.Modal(document.getElementById(modalId));
+                modal.show();
+            }
+        });
+    });
+}
+
+function loadAnimalCards() {
+    const modalAnimalGrid = document.getElementById('modalAnimalGrid');
+    modalAnimalGrid.innerHTML = animals.map(animal => createCard(animal, 'animal')).join('');
+}
+
+function loadHabitatCards() {
+    const modalHabitatGrid = document.getElementById('modalHabitatGrid');
+    modalHabitatGrid.innerHTML = habitats.map(habitat => createCard(habitat, 'habitat')).join('');
+}
+
+// N'oubliez pas d'appeler cette fonction au chargement de la page
+document.addEventListener('DOMContentLoaded', function() {
+    const modalIds = ['diversiteAnimaleModal', 'habitatsNaturelsModal', 'conservationModal'];
+    
+    modalIds.forEach(modalId => {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            const closeButton = modal.querySelector('.btn-close');
+            if (closeButton) {
+                closeButton.addEventListener('click', function() {
+                    const modalInstance = bootstrap.Modal.getInstance(modal);
+                    if (modalInstance) {
+                        modalInstance.hide();
+                    }
+                });
+            }
+        }
+    });
+});
+function setupSearchBar() {
+    const searchBar = document.getElementById('searchBar');
+    if (searchBar) {
+        searchBar.addEventListener('keyup', function(event) {
+            const searchText = event.target.value.toLowerCase();
+            const animalItems = document.querySelectorAll('.animal-item');
+            animalItems.forEach(item => {
+                const animalName = item.querySelector('.animal-name').textContent.toLowerCase();
+                if (animalName.startsWith(searchText)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    }
+}
+function setupAnimalModals() {
+    const modalContainer = document.createElement('div');
+    modalContainer.id = 'animal-modals';
+   
+    animals.forEach(animal => {
+        const safeId = animal.name.replace(/[^a-z0-9]/gi, '');
+        const modalId = `animalModal-${safeId}`;
+        const modal = `
+            <div class="modal fade" id="${modalId}" tabindex="-1" aria-labelledby="${modalId}Label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="${modalId}Label">${animal.name}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="${animal.image}" class="img-fluid mb-3" alt="${animal.name}">
+                            <p><strong>Prénom:</strong> ${animal.firstName}</p>
+                            <p><strong>Espèce:</strong> ${animal.species}</p>
+                            <p><strong>Habitat:</strong> ${animal.habitat}</p>
+                            <p><strong>Régime alimentaire:</strong> ${animal.diet}</p>
+                            <p><strong>État:</strong> ${animal.etat}</p>
+                            <p><strong>Nourriture proposée:</strong> ${animal.nourritureProposee}</p>
+                            <p><strong>Grammage:</strong> ${animal.grammageNourriture} g</p>
+                            <p><strong>Date de passage:</strong> ${animal.datePassage}</p>
+                            <p><strong>Détails de l'état:</strong> ${animal.detailEtat}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        modalContainer.innerHTML += modal;
+    });
+
+    document.body.appendChild(modalContainer);
+}
+function hideAllExceptThreeRandom() {
+    const animalItems = document.querySelectorAll('.animal-item');
+    const totalAnimals = animalItems.length;
+    
+    // Si il y a moins ou exactement trois animaux, ne rien cacher
+    if (totalAnimals <= 3) return;
+
+    // Créez un tableau de tous les indices des animaux
+    const indices = Array.from(Array(totalAnimals).keys());
+
+    // Mélanger les indices pour obtenir trois indices aléatoires
+    for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+
+    // Gardez les trois premiers indices et cachez les autres animaux
+    const visibleIndices = indices.slice(0, 3);
+    animalItems.forEach((item, index) => {
+        if (!visibleIndices.includes(index)) {
+            item.style.display = 'none';
+        } else {
+            item.style.display = 'block';
+        }
+    });
+}
+// Fonction pour cacher tous les animaux sauf quatre de manière aléatoire
+function hideAllExceptFourRandom() {
+    const animalItems = document.querySelectorAll('.animal-item');
+    const totalAnimals = animalItems.length;
+
+    // Si il y a moins ou exactement quatre animaux, ne rien cacher
+    if (totalAnimals <= 4) return;
+
+    // Créez un tableau de tous les indices des animaux
+    const indices = Array.from(Array(totalAnimals).keys());
+
+    // Mélanger les indices pour obtenir quatre indices aléatoires
+    for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+
+    // Gardez les quatre premiers indices et cachez les autres animaux
+    const visibleIndices = indices.slice(0, 4);
+    animalItems.forEach((item, index) => {
+        if (!visibleIndices.includes(index)) {
+            item.style.display = 'none';
+        } else {
+            item.style.display = 'block';
+        }
+    });
+
+    // Sauvegarder les indices restants pour le bouton "Voir plus"
+    window.remainingIndices = indices.slice(4);
+}
+
+// Fonction pour afficher plus d'animaux
+function showMoreAnimals() {
+    const animalItems = document.querySelectorAll('.animal-item');
+    const remainingIndices = window.remainingIndices;
+
+    // Afficher les quatre prochains animaux
+    const nextIndices = remainingIndices.slice(0, 4);
+    nextIndices.forEach(index => {
+        animalItems[index].style.display = 'block';
+    });
+
+    // Mettre à jour les indices restants
+    window.remainingIndices = remainingIndices.slice(4);
+
+    // Cacher le bouton "Voir plus" si tous les animaux sont affichés
+    if (window.remainingIndices.length === 0) {
+        document.getElementById('btnVoirPlus').style.display = 'none';
+    }
+}
+
+window.addEventListener('scroll', function() {
+    var feuilles = document.querySelectorAll('.feuille');
+    var tiges = document.querySelectorAll('.tige');
+    var scrollPosition = window.pageYOffset;
+  
+    feuilles.forEach(function(feuille, index) {
+      var delay = index * 100;
+      var translateY = scrollPosition * 0.1;
+      feuille.style.transitionDelay = delay + 'ms';
+      feuille.style.transform = 'translateY(' + translateY + 'px)';
+      feuille.classList.add('visible');
+    });
+  
+    tiges.forEach(function(tige, index) {
+      var delay = index * 100;
+      var translateY = scrollPosition * 0.05;
+      tige.style.transitionDelay = delay + 'ms';
+      tige.style.transform = 'translateY(' + translateY + 'px)';
+      tige.classList.add('visible');
+    });
+  });
+  function loadAnimals() {
+    fetch('get_animals.php')
+        .then(response => response.json())
+        .then(animals => {
+            const animalGrid = document.getElementById('animal-grid');
+            if (animalGrid) {
+                animalGrid.innerHTML = animals.map(animal => createCard(animal, 'animal')).join('');
+                setupAnimalModals();
+                setupFilters();
+            }
+        })
+        .catch(error => console.error('Erreur lors du chargement des animaux:', error));
+}

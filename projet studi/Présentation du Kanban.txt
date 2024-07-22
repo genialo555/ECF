@@ -1,0 +1,66 @@
+Présentation du Kanban
+
+Pour organiser les tâches et suivre l'avancement du projet, nous avons utilisé un tableau Kanban dans l'outil Trello. Voici une présentation détaillée de notre Kanban :
+Colonnes du Kanban
+
+    Backlog :
+        Contient toutes les fonctionnalités et tâches qui doivent être réalisées mais qui ne sont pas encore en cours de développement.
+        Les tâches sont priorisées selon leur importance et leur impact sur le projet.
+
+    À faire :
+        Regroupe les tâches qui ont été sélectionnées pour le sprint actuel et qui sont prêtes à être commencées.
+        Les tâches sont déplacées ici lors de la planification du sprint.
+
+    En cours :
+        Tâches actuellement en cours de développement.
+        Les développeurs assignent et déplacent les tâches de la colonne "À faire" à "En cours" lorsqu'ils commencent à travailler dessus.
+
+    En revue :
+        Tâches terminées mais nécessitant une revue ou une validation par un autre membre de l'équipe.
+        Inclut les revues de code, les tests, et les vérifications de conformité.
+
+    Terminées :
+        Tâches complètement terminées et approuvées.
+        Inclut les tâches déployées en production et prêtes pour l'utilisation par les utilisateurs finaux.
+
+    Bloquées :
+        Tâches rencontrant des obstacles qui empêchent leur progression.
+        Les obstacles sont identifiés et des solutions sont recherchées pour débloquer les tâches.
+
+Exemple de tâches
+
+    Backlog :
+        Création de la page d'accueil (US 1)
+        Implémentation du menu de l'application (US 2)
+        Développement de la vue globale des services (US 3)
+
+    À faire :
+        Création de la base de données relationnelle
+        Mise en place de l'environnement de développement
+
+    En cours :
+        Développement de l'interface utilisateur pour les cartes des animaux
+        Intégration de l'API pour la gestion des avis
+
+    En revue :
+        Revue de code pour la fonctionnalité de validation des avis
+        Test de l'interface de connexion
+
+    Terminées :
+        Mise en place du système de navigation
+        Développement de la fonctionnalité de création de comptes administrateurs
+
+    Bloquées :
+        Problème de performance avec la base de données NoSQL
+        Difficultés avec l'intégration du module de paiement
+
+Visuel du Kanban
+
+Avantages de notre méthodologie et de l'utilisation du Kanban
+
+    Transparence : Tout le monde peut voir l'avancement du projet et savoir quelles tâches sont en cours, terminées ou bloquées.
+    Flexibilité : La méthodologie Agile nous permet de réagir rapidement aux changements et aux retours des utilisateurs.
+    Collaboration : Le tableau Kanban favorise la collaboration entre les membres de l'équipe en offrant une vue claire des responsabilités et des tâches.
+    Amélioration continue : Les rétrospectives nous permettent d'identifier les points à améliorer et de mettre en place des actions pour les futurs sprints.
+
+En conclusion, notre approche méthodologique et l'utilisation du Kanban nous ont permis de gérer efficacement le projet, d'assurer une livraison continue de valeur et de maintenir une communication claire et ouverte au sein de l'équipe.
